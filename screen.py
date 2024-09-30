@@ -42,7 +42,7 @@ def set_screen_size():
     pygame.display.flip()
     pygame.display.update()
     assign_metrix_to_screen(game_matrix,screen,size)
-    time.sleep(30)
+    time.sleep(10)
 
 set_screen_size()
 

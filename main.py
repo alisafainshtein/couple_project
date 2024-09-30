@@ -14,9 +14,9 @@ soldier_object = soldier.create_soldier_image()
 flag_object = screen.create_flag_image()
 game_field.init_object(game_matrix, soldier_object)
 game_field.init_object(game_matrix, flag_object)
-bush_places = []
-bush_places = game_field.random_bushes(bush_places)
-game_field.position_bushes(game_matrix, bush_places)
+mine_places = []
+mine_places = game_field.random_mines(mine_places)
+game_field.position_bushes(game_matrix, mine_places)
 screen.blit((soldier.soldier_img), (0, 0))
 
 # running game

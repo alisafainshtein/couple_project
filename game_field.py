@@ -8,11 +8,30 @@ import random
 # game starting position
 def init_object(game_metrix, game_object, object_indexes):
 
-def random_bushes(bush_index_list):
-
-
-
-    return
+def random_mines(mine_index_list):
+    tmp_forbidden_list = consts.FORBIDDEN_IND_FOR_BOMBS
+    for i in range(20):
+        indexes_allowed = False
+        block_counter = 0
+        while not indexes_allowed:
+            indexes_of_entire_mine = []
+            index_of_part_of_mine = ()
+            row = random.randrange(0, 25)
+            while block_counter <= 3:
+                col = random.randrange(0, 50)
+                index_of_part_of_mine = (row, col)
+                if not index_of_part_of_mine in tmp_forbidden_list:
+                    tmp_forbidden_list.append(index_of_part_of_mine)
+                    indexes_of_entire_mine.append(index_of_part_of_mine)
+                    block_counter += 1
+                    if block_counter == 3:
+                        indexes_allowed = True
+                else:
+                    indexes_allowed = False
+                    block_counter = 0
+                    indexes_of_entire_mine.clear()
+        mine_index_list.append(indexes_of_entire_mine)
+    return mine_index_list
 
 def position_bushes(game_metrix, bush_index_list):
     for b in range(len(bush_index_list)):

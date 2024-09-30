@@ -23,29 +23,26 @@ def initalize_game_metrix(game_matrix):
 game_matrix = []
 initalize_game_metrix(game_matrix)
 
+color = (0, 128, 0)
+def assign_metrix_to_screen(matrix, screen, size):
+    num_rows = len(matrix)
+    num_cols = len(matrix[0])
+    for i in range(num_rows):
+        for j in range(num_cols):
+            pygame.draw.rect(screen,  color,(j * size, i * size, size - 1, size - 1))
+    pygame.display.update()
 
-# def set_screen_size():
-#     pygame.init()
-#     size = 20
-#     color = (10, 10, 10)
-#     num_rows = 25
-#     num_cols = 50
-#     screen = pygame.display.set_mode((num_cols * size, num_rows * size))
-#     screen.fill(color)
-#     pygame.display.flip()
-#     pygame.display.update()
-#     pygame.time.wait()
-#
-# set_screen_size()
+def set_screen_size():
+    pygame.init()
+    size = 20
+    num_rows = 25
+    num_cols = 50
+    screen = pygame.display.set_mode((num_cols * size, num_rows * size))
+    screen.fill(color)
+    pygame.display.flip()
+    pygame.display.update()
+    assign_metrix_to_screen(game_matrix,screen,size)
+    time.sleep(30)
 
-# pygame.init()
-# global screen
-# screen_size = (50, 25)
-# screen = pygame.display.set_mode(screen_size)
-# color = (10, 10, 10)
-# screen.fill(color)
-# pygame.display.flip()
-# time.sleep(30)
+set_screen_size()
 
-
-screen = pygame.display.set_mode((100,200))

@@ -1,5 +1,5 @@
 import pygame
-from consts import *
+import consts
 import time
 
 
@@ -48,12 +48,6 @@ def set_screen_size():
                                  (4 * size, 3 * size))
     screen.blit(img, ((49 * size) - (3 * size), (24 * size) - (4 * size)))
 
-
-def create_flag_image():
-    flag_img = pygame.image.load('flag.png')
-    flag_img = pygame.transform.scale(flag_img, (4, 3))
-    flag_surface = pygame.Surface((4, 3))
-    pygame.Surface.blit(flag_surface, flag_img, dest=(21, 46))
     pygame.display.flip()
     pygame.display.update()
 
@@ -64,4 +58,3 @@ def create_flag_image():
 
 
 set_screen_size()
-

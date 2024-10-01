@@ -3,6 +3,7 @@ from consts import *
 import time
 
 
+
 # make screen background
 
 def initalize_game_metrix(game_matrix):
@@ -23,8 +24,6 @@ game_matrix = []
 initalize_game_metrix(game_matrix)
 
 color = (0, 128, 0)
-
-
 def assign_metrix_to_screen(matrix, screen, size):
     num_rows = len(matrix)
     num_cols = len(matrix[0])
@@ -32,7 +31,6 @@ def assign_metrix_to_screen(matrix, screen, size):
         for j in range(num_cols):
             pygame.draw.rect(screen, GREEN, (j * size, i * size, size - 1, size - 1))
     pygame.display.update()
-
 
 def set_screen_size():
     pygame.init()
@@ -47,8 +45,16 @@ def set_screen_size():
     time.sleep(10)
 
 
-set_screen_size()
 
-soldier_img = pygame.image.load('soldier.png')
-pygame.image.save(soldier_img, 'soldier.png')
-soldier_img = pygame.transform.scale(soldier_img, (2, 6))
+def create_flag_image():
+    flag_img = pygame.image.load('flag.png')
+    flag_img = pygame.transform.scale(flag_img, (4, 3))
+    flag_surface = pygame.Surface((4, 3))
+    pygame.Surface.blit(flag_surface, flag_img, dest=(21, 46))
+    pygame.display.flip()
+    pygame.display.update()
+
+
+set_screen_size()
+create_flag_image()
+

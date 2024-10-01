@@ -11,33 +11,37 @@ def random_mines(mine_index_list):
     tmp_forbidden_list = consts.FORBIDDEN_IND_FOR_BOMBS
     for i in range(20):
         indexes_allowed = False
-        block_counter = 0
         while not indexes_allowed:
             indexes_of_entire_mine = []
             index_of_part_of_mine = ()
             row = random.randrange(0, 25)
-            while block_counter <= 3:
-                col = random.randrange(0, 50)
-                index_of_part_of_mine = (row, col)
-                if not index_of_part_of_mine in tmp_forbidden_list:
+            col = random.randrange(0, 50)
+            index_of_part_of_mine = (row, col)
+            index_of_part_of_mine2 = (row, col + 1)
+            index_of_part_of_mine3 = (row, col + 2)
+            if not index_of_part_of_mine in tmp_forbidden_list or not index_of_part_of_mine2 in tmp_forbidden_list or not index_of_part_of_mine3 in tmp_forbidden_list:
                     tmp_forbidden_list.append(index_of_part_of_mine)
+                    tmp_forbidden_list.append(index_of_part_of_mine2)
+                    tmp_forbidden_list.append(index_of_part_of_mine3)
                     indexes_of_entire_mine.append(index_of_part_of_mine)
-                    block_counter += 1
-                    if block_counter == 3:
-                        indexes_allowed = True
+                    indexes_of_entire_mine.append(index_of_part_of_mine2)
+                    indexes_of_entire_mine.append(index_of_part_of_mine3)
+                    indexes_allowed = True
                 else:
                     indexes_allowed = False
-                    block_counter = 0
                     indexes_of_entire_mine.clear()
         mine_index_list.append(indexes_of_entire_mine)
     return mine_index_list
 
-# def position_bushes(game_metrix, bush_index_list):
-    for b in range(len(bush_index_list)):
-        for i in range(len(game_metrix)):
-            for j in range(len(game_metrix[i])):
-                if bush_index_list[b][0] == i and bush_index_list[b][1] == j:
-                    game_metrix[i][j] = consts.BOMB
+
+
+def position_mines(game_metrix, mine_index_list):
+    for row in mine_index_list:
+        for tuple_index in mine_index_list:
+            for i in range(len(game_metrix)):
+                for j in range(len(game_metrix[i])):
+                    if row == i and tuple == j:
+                        game_metrix[i][j] = consts.BOMB
     return game_metrix
 def get_players_move():
     for event in pygame.event.get():
@@ -104,6 +108,7 @@ def move_soldier_in_matrix(game_matrix, players_move):
 def check_soldier_position(game_metrix):
 
 
+g
 def show_mines():
 
 

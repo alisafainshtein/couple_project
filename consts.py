@@ -17,3 +17,6 @@ FORBIDDEN_IND_FOR_BOMBS = [(21, 46), (21, 47), (21, 48), (21, 49),
                             (6, 0), (6, 1)]
 BOMB = "mine"
 FREE = 0
+SIZE = 20
+NUM_ROWS = 25
+NUM_COLS = 50

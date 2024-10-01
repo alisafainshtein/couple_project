@@ -1,5 +1,5 @@
 import pygame
-import consts
+from consts import *
 import time
 
 
@@ -14,7 +14,7 @@ def initalize_game_metrix(game_matrix):
             elif 46 <= j <= 49 and 21 <= i <= 23:
                 inner_list.append("flag")
             else:
-                inner_list.append(consts.FREE)
+                inner_list.append(FREE)
         game_matrix.append(inner_list)
     return game_matrix
 
@@ -37,16 +37,13 @@ def assign_metrix_to_screen(matrix, screen, size):
 
 def set_screen_size():
     pygame.init()
-    size = 20
-    num_rows = 25
-    num_cols = 50
-    screen = pygame.display.set_mode((num_cols * size, num_rows * size))
-    # screen.fill(color_)
-    assign_metrix_to_screen(game_matrix, screen, size)
+    screen = pygame.display.set_mode((NUM_COLS * SIZE, NUM_COLS * SIZE))
+    screen.fill(color_)
+    assign_metrix_to_screen(game_matrix, screen, SIZE)
     img = pygame.image.load('flag.png')
     img = pygame.transform.scale(img,
-                                 (4 * size, 3 * size))
-    screen.blit(img, ((49 * size) - (3 * size), (24 * size) - (4 * size)))
+                                 (4 * SIZE, 3 * SIZE))
+    screen.blit(img, ((49 * SIZE) - (3 * SIZE), (24 * SIZE) - (4 * SIZE)))
 
     pygame.display.flip()
     pygame.display.update()
@@ -58,4 +55,3 @@ def set_screen_size():
 
 
 set_screen_size()
-

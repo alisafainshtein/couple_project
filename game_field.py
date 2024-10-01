@@ -70,7 +70,7 @@ def move_soldier(game_matrix, players_move):
     elif players_move == pygame.K_RIGHT:
 
 
-
+g
 def show_mines():
 
 

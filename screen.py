@@ -14,7 +14,7 @@ def initalize_game_metrix(game_matrix):
             elif 46 <= j <= 49 and 21 <= i <= 23:
                 inner_list.append("flag")
             else:
-                inner_list.append(FREE)
+                inner_list.append(consts.FREE)
         game_matrix.append(inner_list)
     return game_matrix
 
@@ -23,13 +23,17 @@ game_matrix = []
 initalize_game_metrix(game_matrix)
 
 color = (0, 128, 0)
+color_ = (10, 10, 10)
+
+
 def assign_metrix_to_screen(matrix, screen, size):
     num_rows = len(matrix)
     num_cols = len(matrix[0])
     for i in range(num_rows):
         for j in range(num_cols):
-            pygame.draw.rect(screen, GREEN, (j * size, i * size, size - 1, size - 1))
+            pygame.draw.rect(screen, color, (j * size, i * size, size - 1, size - 1))
     pygame.display.update()
+
 
 def set_screen_size():
     pygame.init()
@@ -37,23 +41,27 @@ def set_screen_size():
     num_rows = 25
     num_cols = 50
     screen = pygame.display.set_mode((num_cols * size, num_rows * size))
-    screen.fill(color)
-    pygame.display.flip()
-    pygame.display.update()
-    assign_metrix_to_screen(game_matrix, GREEN, size)
-    time.sleep(10)
-
+    # screen.fill(color_)
+    assign_metrix_to_screen(game_matrix, screen, size)
+    img = pygame.image.load('flag.png')
+    img = pygame.transform.scale(img,
+                                 (4 * size, 3 * size))
+    screen.blit(img, ((49 * size) - (3 * size), (24 * size) - (4 * size)))
 
 
 def create_flag_image():
     flag_img = pygame.image.load('flag.png')
     flag_img = pygame.transform.scale(flag_img, (4, 3))
     flag_surface = pygame.Surface((4, 3))
-    screen_.blit(flag_img, ((25 * 20) - 4, (50 * 20) - 3))
+    pygame.Surface.blit(flag_surface, flag_img, dest=(21, 46))
     pygame.display.flip()
     pygame.display.update()
 
+    time.sleep(10)
+    return screen
 
-screen_test = set_screen_size()
-screen_surface = pygame.Surface(screen_test)
-create_flag_image(screen_surface)
+
+
+
+set_screen_size()
+

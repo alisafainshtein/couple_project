@@ -41,22 +41,21 @@ def set_screen_size():
     num_rows = 25
     num_cols = 50
     screen = pygame.display.set_mode((num_cols * size, num_rows * size))
-    screen.fill(color_)
-    pygame.display.flip()
-    pygame.display.update()
+    # screen.fill(color_)
     assign_metrix_to_screen(game_matrix, screen, size)
-    time.sleep(10)
+    img = pygame.image.load('flag.png')
+    img = pygame.transform.scale(img,
+                                 (4 * size, 3 * size))
+    screen.blit(img, ((49 * size) - (3 * size), (24 * size) - (4 * size)))
 
-
-def create_flag_image():
-    flag_img = pygame.image.load('flag.png')
-    flag_img = pygame.transform.scale(flag_img, (4, 3))
-    flag_surface = pygame.Surface((4, 3))
-    pygame.Surface.blit(flag_surface, flag_img, dest=(21, 46))
     pygame.display.flip()
     pygame.display.update()
+
+    time.sleep(10)
+    return screen
+
+
 
 
 set_screen_size()
-create_flag_image()
 

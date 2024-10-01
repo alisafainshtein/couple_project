@@ -20,12 +20,8 @@ def main():
     screen.blit(flag_img, ((49 * size) - (3 * size), (24 * size) - (4 * size)))
     pygame.display.flip()
     pygame.display.update()
-    soldier_img = pygame.image.load('soldier.png')
-    soldier_img = pygame.transform.scale(soldier_img,
-                                         (2 * size, 6 * size))
-    screen.blit(soldier_img, (0, 0))
-    pygame.display.flip()
-    pygame.display.update()
+    soldier_index = (0, 0)
+    position_soldier(screen, soldier_index)
 
     time.sleep(10)
     #mine_index_list = []
@@ -37,7 +33,8 @@ def main():
     #         players_move = event.type
     #         if players_move != pygame.K_KP_ENTER:
     #             players_move = get_players_move(players_move)
-    #             move_soldier_in_matrix(game_matrix, players_move)
+    #             move_soldier_in_matrix(game_matrix, players_move, screen)
+
     #         #elif players_move == pygame.K_KP_ENTER:
     #             # show mines
     #     # update screen
@@ -45,3 +42,4 @@ def main():
 
 
 main()
+#(i * size) - (2 * size), (j * size) - (6 * size)

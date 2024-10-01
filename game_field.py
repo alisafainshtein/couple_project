@@ -41,7 +41,7 @@ def position_mines(game_metrix, mine_index_list):
             for i in range(len(game_metrix)):
                 for j in range(len(game_metrix[i])):
                     if row == i and tuple == j:
-                        game_metrix[i][j] = consts.BOMB
+                        game_metrix[i][j] = BOMB
     return game_metrix
 def get_players_move(players_move):
     if players_move == pygame.K_UP:
@@ -58,7 +58,7 @@ def get_players_move(players_move):
         return players_move
 
 
-def move_soldier_in_matrix(game_matrix, players_move):
+def move_soldier_in_matrix(game_matrix, players_move, game_screen):
     tmp_game_matrix = game_matrix
     for i in range(len(tmp_game_matrix)):
         for j in range(len(tmp_game_matrix[i])):
@@ -67,8 +67,12 @@ def move_soldier_in_matrix(game_matrix, players_move):
                 soldier_counter += 1 #check when cant move to that directions
                 if i > 0 and players_move == UP:
                     if tmp_game_matrix[i][j] != BOMB:
-                        game_matrix[i][j] == FREE
-                        game_matrix[i - 1][j] == SOLDIER
+                        game_matrix[i][j] = FREE
+                        game_matrix[i - 1][j] = SOLDIER
+                        if soldier_counter == 1:
+                            soldier_index = (i - 1, j)
+                            screen.position_soldier(game_screen, soldier_index)
+
                     elif tmp_game_matrix[i][j] == BOMB and soldier_counter > 4:
                             lose
                     elif tmp_game_matrix[i][j] == FLAG and soldier_counter <= 4:
@@ -76,24 +80,34 @@ def move_soldier_in_matrix(game_matrix, players_move):
 
                 elif i < 50 and players_move == DOWN:
                     if tmp_game_matrix[i][j] != BOMB:
-                        game_matrix[i][j] == FREE
-                        game_matrix[i + 1][j] == SOLDIER
+                        game_matrix[i][j] = FREE
+                        game_matrix[i + 1][j] = SOLDIER
+                        if soldier_counter == 1:
+                            soldier_index = (i + 1, j)
+                            screen.position_soldier(game_screen, soldier_index)
+
                     elif soldier_counter > 4:
                             lose
                     elif tmp_game_matrix[i][j] == FLAG and soldier_counter <= 4:
                         win
                 elif j > 0 and players_move == LEFT:
                     if tmp_game_matrix[i][j] != BOMB:
-                        game_matrix[i][j] == FREE
-                        game_matrix[i][j - 1] == SOLDIER
+                        game_matrix[i][j] = FREE
+                        game_matrix[i][j - 1] = SOLDIER
+                        if soldier_counter == 1:
+                            soldier_index = (i, j - 1)
+                            screen.position_soldier(game_screen, soldier_index)
                     elif soldier_counter > 4:
                             lose
                     elif tmp_game_matrix[i][j] == FLAG and soldier_counter <= 4:
                         win
                 elif j < 25 and players_move == RIGHT:
                     if tmp_game_matrix[i][j] != BOMB:
-                        game_matrix[i][j] == FREE
-                        game_matrix[i][j + 1] == SOLDIER
+                        game_matrix[i][j] = FREE
+                        game_matrix[i][j + 1] = SOLDIER
+                        if soldier_counter == 1:
+                            soldier_index = (i, j + 1)
+                            screen.position_soldier(game_screen, soldier_index)
 
                     elif soldier_counter > 4:
                         lose
@@ -101,10 +115,8 @@ def move_soldier_in_matrix(game_matrix, players_move):
                         win
     return game_matrix
 
-def check_soldier_position(game_metrix):
 
 
-g
 def show_mines():
 
 

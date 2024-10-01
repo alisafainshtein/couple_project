@@ -37,21 +37,43 @@ def assign_metrix_to_screen(matrix, screen, size):
 
 def set_screen_size():
     pygame.init()
-    screen = pygame.display.set_mode((NUM_COLS * SIZE, NUM_COLS * SIZE))
-    screen.fill(color_)
-    assign_metrix_to_screen(game_matrix, screen, SIZE)
-    img = pygame.image.load('flag.png')
-    img = pygame.transform.scale(img,
-                                 (4 * SIZE, 3 * SIZE))
-    screen.blit(img, ((49 * SIZE) - (3 * SIZE), (24 * SIZE) - (4 * SIZE)))
-
+    size = 20
+    num_rows = 25
+    num_cols = 50
+    screen = pygame.display.set_mode((num_cols * size, num_rows * size))
+    # screen.fill(color_)
+    assign_metrix_to_screen(game_matrix, screen, size)
+    flag_img = pygame.image.load('flag.png')
+    flag_img = pygame.transform.scale(flag_img,
+                                      (4 * size, 3 * size))
+    screen.blit(flag_img, ((49 * size) - (3 * size), (24 * size) - (4 * size)))
     pygame.display.flip()
     pygame.display.update()
-
+    soldier_img = pygame.image.load('soldier.png')
+    soldier_img = pygame.transform.scale(soldier_img,
+                                         (2 * size, 6 * size))
+    screen.blit(soldier_img, (0, 0))
+    pygame.display.flip()
+    pygame.display.update()
+    bush_img = pygame.image.load('grass.png')
+    bush_img = pygame.transform.scale(bush_img,
+                                      (2 * size, 2 * size))
+    screen.blit(bush_img, (100, 100))
+    pygame.display.flip()
+    pygame.display.update()
     time.sleep(10)
-    return screen
-
-
 
 
 set_screen_size()
+
+
+def position_soldier(screen, soldier_index):
+    soldier_img = pygame.image.load('soldier.png')
+    soldier_img = pygame.transform.scale(soldier_img,
+                                         (2 * 20, 6 * 20))
+    screen.blit(soldier_img, soldier_index)
+    pygame.display.flip()
+    pygame.display.update()
+
+def win_message():
+    

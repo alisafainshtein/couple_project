@@ -3,7 +3,6 @@ from consts import *
 import time
 
 
-
 # make screen background
 
 def initalize_game_metrix(game_matrix):
@@ -15,7 +14,7 @@ def initalize_game_metrix(game_matrix):
             elif 46 <= j <= 49 and 21 <= i <= 23:
                 inner_list.append("flag")
             else:
-                inner_list.append(consts.FREE)
+                inner_list.append(FREE)
         game_matrix.append(inner_list)
     return game_matrix
 
@@ -50,11 +49,11 @@ def create_flag_image():
     flag_img = pygame.image.load('flag.png')
     flag_img = pygame.transform.scale(flag_img, (4, 3))
     flag_surface = pygame.Surface((4, 3))
-    pygame.Surface.blit(flag_surface, flag_img, dest=(21, 46))
+    screen_.blit(flag_img, ((25 * 20) - 4, (50 * 20) - 3))
     pygame.display.flip()
     pygame.display.update()
 
 
-set_screen_size()
-create_flag_image()
-
+screen_test = set_screen_size()
+screen_surface = pygame.Surface(screen_test)
+create_flag_image(screen_surface)

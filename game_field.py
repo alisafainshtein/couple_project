@@ -33,7 +33,7 @@ def random_mines(mine_index_list):
         mine_index_list.append(indexes_of_entire_mine)
     return mine_index_list
 
-def position_bushes(game_metrix, bush_index_list):
+# def position_bushes(game_metrix, bush_index_list):
     for b in range(len(bush_index_list)):
         for i in range(len(game_metrix)):
             for j in range(len(game_metrix[i])):
@@ -60,6 +60,7 @@ def get_players_move():
             return players_move
 
 def move_soldier(game_matrix, players_move):
+    for i in range(len())
     if players_move == pygame.K_UP:
 
     elif players_move == pygame.K_DOWN:
@@ -70,7 +71,7 @@ def move_soldier(game_matrix, players_move):
 
 
 
-def show_bushes():
+def show_mines():
 
 
 
